@@ -4,8 +4,11 @@
         <ul>
             <li><a href="{{ page.lang.url }}">Home</a></li>
         </ul>
-        {# TODO search optional #}
-        <ul><li><form action="{{ site.base_url }}/search/results.html" method="GET"><input name="q" type="search" placeholder="Search"></form></li></ul>
+        {% if site.search.enabled %}
+        <ul><li><form action="/search/results.html" method="GET">
+            <input name="q" type="search" placeholder="Search">
+        </form></li></ul>
+        {% endif %}
         <ul>
             
             {% for catKey, catValue in site.categories.items() %}
