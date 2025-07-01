@@ -1,0 +1,24 @@
+
+name: My Cool Site
+description: My Cool Site Description
+timezone: Europe/Sarajevo
+
+#base_url: https://example.com
+
+theme:
+  enabled: false # this theme does not *have a theme*
+
+code_highlight:
+  enabled: true
+math_highlight:
+  enabled: true
+
+
+categories:
+  docs:
+    label: Documentation
+    description: The documentation section of the site
+  blog:
+    label: Blog
+    description: The blog section of the site
+
