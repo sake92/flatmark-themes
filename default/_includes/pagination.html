@@ -9,7 +9,6 @@
         </ul>
     </nav>
 
-{% if paginator.total_pages > 1 %}
     <div>
         {% set prev = paginator.has_prev ? paginator.prev_url : '#' %}    
         {% set next = paginator.has_next ? paginator.next_url : '#' %}    
@@ -17,7 +16,6 @@
         <span role="button" class="outline" disabled>{{ paginator.current }}</span>
         <a href="{{ next }}" {{ paginator.has_next ? "" : "disabled" }} role="button">Next</a>
     </div>
-{% endif %}
 
 </aside>
 

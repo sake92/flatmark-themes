@@ -2,9 +2,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {{page.content}}
 
-    {% if not page.theme_props.pagination_disabled %}
+    {{ page.content }}
+
+    {% if paginator.enabled %}
         {% include "pagination.html" %}
     {% endif %}
     

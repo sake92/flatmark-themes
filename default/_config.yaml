@@ -8,11 +8,12 @@ timezone: Europe/Sarajevo
 theme:
   enabled: false # this theme does not *have a theme*
 
+search:
+  enabled: true
 code_highlight:
   enabled: true
 math_highlight:
   enabled: true
-
 
 categories:
   docs:
