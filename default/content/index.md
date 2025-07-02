@@ -1,6 +1,8 @@
 ---
 title: Home
 description: Home page
+pagination:
+  enabled: false
 ---
 
 # Hello Flatmark!

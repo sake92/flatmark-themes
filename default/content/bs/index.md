@@ -1,6 +1,8 @@
 ---
 title: Početna
 description: Početna stranica
+pagination:
+  enabled: false
 ---
 
 # Poyy Flatmark!
