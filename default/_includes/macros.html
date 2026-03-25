@@ -1,0 +1,26 @@
+{% macro prev_next(items) %}
+
+{% set currentUrl = page.url | replace(site.base_url, '') %}
+
+{% set ns = namespace(prevItem=none, nextItem=none) %}
+
+{% for item in items %}
+  {% if item.url == currentUrl %}
+    {% if loop.index0 > 0 %}
+      {% set ns.prevItem = items[loop.index0 - 1] %}
+    {% endif %}
+    {% if loop.index0 < (items | length) - 1 %}
+      {% set ns.nextItem = items[loop.index0 + 1] %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% if ns.prevItem or ns.nextItem %}
+<div role="group">
+{% if ns.prevItem %}<a role="button" href="{{ ns.prevItem.url }}">⬅️ {{ ns.prevItem.label }}</a>{% else %}<span></span>{% endif %}
+<span></span>
+{% if ns.nextItem %}<a role="button" href="{{ ns.nextItem.url }}">{{ ns.nextItem.label }} ➡️</a>{% else %}<span></span>{% endif %}
+</div>
+{% endif %}
+
+{% endmacro %}
