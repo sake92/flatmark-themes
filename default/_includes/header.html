@@ -1,42 +1,38 @@
-
-<header class="pico container">
-    <nav>
-        <ul>
-            <li><a href="{{ page.lang.url }}">Home</a></li>
-        </ul>
-        {% if site.search.enabled %}
-        <ul><li><form action="/search/results.html" method="GET">
-            <input name="q" type="search" placeholder="Search">
-        </form></li></ul>
-        {% endif %}
-        <ul>
-            
+<header class="pico container fm-header">
+    <nav class="fm-nav" aria-label="Main navigation">
+        <a class="fm-brand" href="{{ page.lang.url }}">{{ site.name }}</a>
+        <div class="fm-nav-links">
             {% for catKey, catValue in site.categories.items() %}
             {% if page.lang.url == "/" %}
-                <li><a href="/{{ catKey }}">{{ catValue.label }}</a></li>
-                {% else %}
-                <li><a href="{{ page.lang.url }}/{{ catKey }}">{{ catValue.label }}</a></li>
-                {% endif %}
-                
-            {% endfor %}
-        
-            {% if site.langs|length > 1 %}
-                <li>
-                    <details class="dropdown">
-                    <summary>
-                        {{ page.lang.label | capitalize }}
-                    </summary>
-                    <ul dir="rtl">
-                        {% for lang in site.langs %}
-                            {% if lang.code != page.lang.code %}
-                                <li><a href="{{ lang.url }}">{{ lang.label | capitalize }}</a></li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
-                  </details>
-                </li>
+            <a class="fm-category-link" href="/{{ catKey }}">{{ catValue.label }}</a>
+            {% else %}
+            <a class="fm-category-link" href="{{ page.lang.url }}/{{ catKey }}">{{ catValue.label }}</a>
             {% endif %}
-        </ul>
+            {% endfor %}
+        </div>
+        {% if site.search.enabled %}
+        <form class="fm-search-form" action="/search/results.html" method="get" role="search">
+            <input name="q" type="search" placeholder="Search" aria-label="Search this site">
+        </form>
+        {% endif %}
+        {% if site.langs|length > 1 %}
+        <details class="dropdown fm-languages">
+            <summary>{{ page.lang.label | capitalize }}</summary>
+            <ul dir="rtl">
+                {% for lang in site.langs %}
+                {% if lang.code != page.lang.code %}
+                <li><a href="{{ lang.url }}">{{ lang.label | capitalize }}</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </details>
+        {% endif %}
     </nav>
 </header>
-    
+<script>
+for (const link of document.querySelectorAll('.fm-category-link')) {
+    const path = new URL(link.href).pathname.replace(/\/$/, '');
+    const current = window.location.pathname;
+    if (current === path || current.startsWith(path + '/')) link.setAttribute('aria-current', 'page');
+}
+</script>
