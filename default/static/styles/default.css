@@ -6,6 +6,7 @@
     --pico-spacing: .8rem;
     --pico-block-spacing-vertical: 1rem;
     --pico-border-radius: 8px;
+    --pico-form-element-spacing-vertical: .375rem;
 }
 
 html {
@@ -37,10 +38,11 @@ body > header {
 .fm-nav-links { display: flex; flex-wrap: wrap; gap: .15rem; align-items: center; }
 .fm-nav-links a { padding: .35rem .6rem; border-radius: 6px; text-decoration: none; white-space: nowrap; }
 .fm-nav-links a[aria-current="page"] { background: var(--pico-secondary-background); color: var(--pico-secondary-inverse); }
-.fm-search-form { margin: 0 0 0 auto; min-width: 10rem; max-width: 15rem; }
-.fm-search-form input { height: 2.3rem; margin: 0; }
+.pico .fm-search-form { margin: 0 0 0 auto; min-width: 10rem; max-width: 12rem; }
+.pico .fm-search-form input { margin: 0; }
 .fm-languages { margin: 0; }
 .fm-languages summary { white-space: nowrap; }
+.pico .fm-pagination { display: flex; justify-content: flex-start; align-items: center; gap: var(--pico-spacing); }
 
 h1, h2, h3 { font-weight: 600; letter-spacing: -.02em; }
 h1 { margin-bottom: .85rem; }
@@ -59,7 +61,7 @@ pre {
     font-size: .84rem;
     line-height: 1.45;
 }
-pre code { display: block; min-width: max-content; padding: 0; background: transparent; font-size: inherit; line-height: inherit; }
+pre code, pre code.hljs { display: block; min-width: max-content; padding: 0; background: transparent; font-size: inherit; line-height: inherit; }
 :not(pre) > code { padding: .12em .3em; border-radius: 4px; background: var(--pico-card-sectioning-background-color); }
 blockquote { padding: .75rem 1rem; border-left: 3px solid var(--pico-primary); background: var(--pico-card-sectioning-background-color); }
 .fm-content table { display: block; max-width: 100%; overflow-x: auto; }
@@ -94,6 +96,6 @@ a.flatmark-anchor:focus { opacity: 1; }
     .fm-nav { padding: .6rem 0; gap: .45rem; }
     .fm-brand { width: 100%; }
     .fm-nav-links { order: 2; width: 100%; }
-    .fm-search-form { flex: 1; max-width: none; }
+    .pico .fm-search-form { flex: 1; max-width: none; }
     .fm-main { padding-top: 1rem; }
 }

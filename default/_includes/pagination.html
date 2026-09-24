@@ -9,13 +9,16 @@
         </ul>
     </nav>
 
-    <div>
-        {% set prev = paginator.has_prev ? paginator.prev_url : '#' %}    
-        {% set next = paginator.has_next ? paginator.next_url : '#' %}    
-        <a href="{{ prev }}" {{ paginator.has_prev ? "" : "disabled" }} role="button">Prev</a>
-        <span role="button" class="outline" disabled>{{ paginator.current }}</span>
-        <a href="{{ next }}" {{ paginator.has_next ? "" : "disabled" }} role="button">Next</a>
-    </div>
+    {% if paginator.has_prev or paginator.has_next %}
+    <nav class="fm-pagination" aria-label="Pagination">
+        {% if paginator.has_prev %}
+        <a href="{{ paginator.prev_url }}" role="button" class="secondary outline">Previous</a>
+        {% endif %}
+        <span aria-current="page">Page {{ paginator.current }}</span>
+        {% if paginator.has_next %}
+        <a href="{{ paginator.next_url }}" role="button" class="secondary outline">Next</a>
+        {% endif %}
+    </nav>
+    {% endif %}
 
 </aside>
-

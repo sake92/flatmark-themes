@@ -1,7 +1,7 @@
 ---
 pagination:
   enabled: true
-  per_page: 10
+  per_page: 5
   sort_by: -publish_date
 ---
 
