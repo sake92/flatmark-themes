@@ -2,7 +2,7 @@
 {% block title %}Search | {{ site.name }}{% endblock %}
 {% block content %}
 <h1>Search</h1>
-<p id="search-status" class="fm-search-status" role="status" aria-live="polite">Loading search results…</p>
+<p id="search-status" role="status" aria-live="polite">Loading search results…</p>
 <div id="search-results"></div>
 {% endblock %}
 {% block scripts %}
@@ -11,7 +11,7 @@
     const query = new URLSearchParams(window.location.search).get('q')?.trim() || '';
     const status = document.getElementById('search-status');
     const results = document.getElementById('search-results');
-    const input = document.querySelector('.fm-search-form input[name="q"]');
+    const input = document.querySelector('form[role="search"] input[name="q"]');
     if (input) input.value = query;
     if (!query) {
         status.textContent = 'Enter a search term above.';
@@ -36,7 +36,6 @@
         status.textContent = matches.length ? `${matches.length} result${matches.length === 1 ? '' : 's'} for “${query}”` : `No results for “${query}”.`;
         for (const match of matches) {
             const article = document.createElement('article');
-            article.className = 'fm-search-result';
             const heading = document.createElement('h2');
             const link = document.createElement('a');
             link.href = match.entry.url;

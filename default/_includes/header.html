@@ -1,22 +1,22 @@
-<header class="pico container fm-header">
-    <nav class="fm-nav" aria-label="Main navigation">
-        <a class="fm-brand" href="{{ page.lang.url }}">{{ site.name }}</a>
-        <div class="fm-nav-links">
+<header class="pico container">
+    <nav aria-label="Main navigation">
+        <a href="{{ page.lang.url }}">{{ site.name }}</a>
+        <div>
             {% for catKey, catValue in site.categories.items() %}
             {% if page.lang.url == "/" %}
-            <a class="fm-category-link" href="/{{ catKey }}">{{ catValue.label }}</a>
+            <a href="/{{ catKey }}">{{ catValue.label }}</a>
             {% else %}
-            <a class="fm-category-link" href="{{ page.lang.url }}/{{ catKey }}">{{ catValue.label }}</a>
+            <a href="{{ page.lang.url }}/{{ catKey }}">{{ catValue.label }}</a>
             {% endif %}
             {% endfor %}
         </div>
         {% if site.search.enabled %}
-        <form class="fm-search-form" action="/search/results.html" method="get" role="search">
+        <form action="/search/results.html" method="get" role="search">
             <input name="q" type="search" placeholder="Search" aria-label="Search this site">
         </form>
         {% endif %}
         {% if site.langs|length > 1 %}
-        <details class="dropdown fm-languages">
+        <details class="dropdown">
             <summary>{{ page.lang.label | capitalize }}</summary>
             <ul dir="rtl">
                 {% for lang in site.langs %}
@@ -30,7 +30,7 @@
     </nav>
 </header>
 <script>
-for (const link of document.querySelectorAll('.fm-category-link')) {
+for (const link of document.querySelectorAll('body > header > nav > div > a')) {
     const path = new URL(link.href).pathname.replace(/\/$/, '');
     const current = window.location.pathname;
     if (current === path || current.startsWith(path + '/')) link.setAttribute('aria-current', 'page');

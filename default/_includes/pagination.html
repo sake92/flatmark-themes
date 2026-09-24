@@ -10,7 +10,7 @@
     </nav>
 
     {% if paginator.has_prev or paginator.has_next %}
-    <nav class="fm-pagination" aria-label="Pagination">
+    <nav aria-label="Pagination">
         {% if paginator.has_prev %}
         <a href="{{ paginator.prev_url }}" role="button" class="secondary outline">Previous</a>
         {% endif %}
